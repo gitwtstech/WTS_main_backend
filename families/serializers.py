@@ -40,8 +40,8 @@ class FamilySerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     revit_families = RevitFamilySerializer(many=True)
     threedsmax_families = ThreeDSMaxFamilySerializer(many=True)
-    creator = serializers.CharField(source='creator.user.username')
-    editor = serializers.CharField(source='creator.user.username')
+    creator = serializers.CharField(source='creator.username')
+    editor = serializers.CharField(source='creator.username')
 
     class Meta:
         model = Family

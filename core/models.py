@@ -1,14 +1,20 @@
 from django.db import models
 
-from users.models import WTSUser
+from WTS_backend import settings
 
 
-# class BaseModel(models.Model):
-#     creator = models.ForeignKey(WTSUser, on_delete=models.PROTECT, related_name='families')
-#     editor = models.ForeignKey(WTSUser, on_delete=models.PROTECT, null=True, blank=True, editable=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
-#
-#     class Meta:
-#         abstract = True
-#         ordering = ['-created_at', '-updated_at']
+class BaseModel(models.Model):
+    name = models.CharField(max_length=256)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='%(class)s_created')
+    editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, blank=True,
+                               related_name='%(class)s_edited', editable=False)
+
+    class Meta:
+        abstract = True
+        ordering = ['-created_at', '-updated_at']
+
+    def __str__(self):
+        return self.name
+

@@ -12,9 +12,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class WTSUserSerializer(serializers.ModelSerializer):
     company = CompanySerializer()
-    username = serializers.CharField(source='user.username')
-    email = serializers.EmailField(source='user.email')
 
     class Meta:
         model = WTSUser
-        exclude = ['user']
+        fields = ['username', 'company']

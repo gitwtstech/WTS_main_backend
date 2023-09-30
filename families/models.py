@@ -1,5 +1,6 @@
 from django.db import models
 
+from core.models import BaseModel
 from users.models import WTSUser
 
 
@@ -23,23 +24,7 @@ class Category(models.Model):
         return self.name
 
 
-class AbstractFamily(models.Model):
-    name = models.CharField(max_length=256)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
-    creator = models.ForeignKey(WTSUser, on_delete=models.PROTECT, related_name='%(class)s_created')
-    editor = models.ForeignKey(WTSUser, on_delete=models.PROTECT, null=True, blank=True,
-                               related_name='%(class)s_edited', editable=False)
-
-    class Meta:
-        abstract = True
-        ordering = ['-created_at', '-updated_at']
-
-    def __str__(self):
-        return self.name
-
-
-class Family(AbstractFamily):
+class Family(BaseModel):
     factory = models.ForeignKey(Factory, on_delete=models.PROTECT, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
 
@@ -48,7 +33,7 @@ class FamilyImage(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
 
 
-class RevitFamily(AbstractFamily):
+class RevitFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='revit_families')
     file = models.FileField(upload_to='revit_family')
 
@@ -61,7 +46,7 @@ class RevitType(models.Model):
     revit_family = models.ForeignKey(RevitFamily, on_delete=models.CASCADE, related_name='revit_types')
 
 
-class ThreeDSMaxFamily(AbstractFamily):
+class ThreeDSMaxFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='threedsmax_families')
     file = models.FileField(upload_to='threedsmax_family')
 

@@ -1,13 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 
-class WTSUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+class WTSUser(AbstractUser):
     company = models.ForeignKey('Company', null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.user.username
+        return self.username
 
 
 class Company(models.Model):
