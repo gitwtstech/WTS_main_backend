@@ -4,8 +4,8 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import routers
 
-from families.views import FamilyViewSet
-from users.views import WTSUserViewSet
+from apps.families.views import FamilyViewSet
+from apps.users.views import WTSUserViewSet
 
 schema_view = get_schema_view(
     openapi.Info(

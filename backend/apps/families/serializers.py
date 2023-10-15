@@ -1,6 +1,6 @@
 from rest_framework import serializers
-
-from families.models import Family, Category, RevitFamily, RevitType, ThreeDSMaxFamily, Factory
+from .models import Family, Category, RevitFamily, RevitType, ThreeDSMaxFamily, Factory
+from config import urls
 
 
 class FactorySerializer(serializers.ModelSerializer):

@@ -1,6 +1,5 @@
 from django.db import models
-
-from WTS_backend import settings
+from django.conf import settings
 
 
 class BaseModel(models.Model):

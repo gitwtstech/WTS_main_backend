@@ -1,7 +1,6 @@
 from django.db import models
 
 from core.models import BaseModel
-from users.models import WTSUser
 
 
 class Factory(models.Model):
@@ -49,4 +48,3 @@ class RevitType(models.Model):
 class ThreeDSMaxFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='threedsmax_families')
     file = models.FileField(upload_to='files')
-
