@@ -11,7 +11,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class WTSUserSerializer(serializers.ModelSerializer):
-    company = CompanySerializer()
+    company = CompanySerializer(required=False, read_only=True)
 
     class Meta:
         model = WTSUser

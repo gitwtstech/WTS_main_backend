@@ -35,7 +35,7 @@ class FamilyImage(models.Model):
 
 class RevitFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='revit_families')
-    file = models.FileField(upload_to='revit_family')
+    file = models.FileField(upload_to='files')
 
     def __str__(self):
         return f'{self.family.name}: {self.name}'
@@ -48,5 +48,5 @@ class RevitType(models.Model):
 
 class ThreeDSMaxFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='threedsmax_families')
-    file = models.FileField(upload_to='threedsmax_family')
+    file = models.FileField(upload_to='files')
 
