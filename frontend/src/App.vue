@@ -6,21 +6,19 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
+        <RouterLink to="/">
+          <img src="assets/logo.svg" alt="logo" />
+        </RouterLink>
         <RouterLink to="/about">О нас</RouterLink>
-        <RouterLink to="/">Курсы</RouterLink>
-        <RouterLink to="/components">Библиотека компонентов</RouterLink>
+        <RouterLink to="/courses">Курсы</RouterLink>
         <RouterLink to="/plugins">Плагины</RouterLink>
-        <RouterLink to="/registration">Логин</RouterLink>
+        <RouterLink to="/components">Библиотека компонентов</RouterLink>
+        <RouterLink to="/login">Логин</RouterLink>
       </nav>
     </div>
   </header>
-  
-  <RouterView />
-  
-  <footer>
-    <p>Malinins &copy; 2023</p>
-  </footer>
 
+  <RouterView />
 </template>
 
 <style scoped>
@@ -28,7 +26,6 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
 
 nav {
   width: 100%;
@@ -54,6 +51,5 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
 
 </style>
