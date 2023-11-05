@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Login from "../components/Login.vue"
+import Registration from "../components/Registration.vue"
 </script>
 <template>
-    <Login />
+    <Registration />
 </template>
 
 <style>
  .container-sm {
     padding: 2rem;
  }
- </style>
+</style>
