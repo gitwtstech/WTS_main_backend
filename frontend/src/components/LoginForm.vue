@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-sm g-2">
                 <label>У вас еще нет аккаунта?</label>
-                <a href="/auth/register">Создать аккаунт</a>
+                <RouterLink to="/auth/register">Создать аккаунт</RouterLink>
             </div>
         </div>
       </div>
