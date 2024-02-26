@@ -8,7 +8,7 @@ import {RouterLink } from "vue-router"
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid justify-content-start">
           <RouterLink to="/" class="navbar-brand">
-            <img src="assets/logo.svg" class="float-start" alt="BIMWIND">
+            <img src="../assets/logo.svg" class="float-start" alt="BIMWIND" style="height: 2rem;">
           </RouterLink>
           
         </div>

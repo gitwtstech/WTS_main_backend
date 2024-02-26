@@ -1,28 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { userAPI } from '../scripts/getDataAPI';
+import { userAPI, type User } from '../scripts/APIDataService';
 
-const user = new userAPI();
-const username = ref('');
-const password = ref('');
-const email = ref('');
-
+const user: User = {
+  username: '',
+  password: '',
+  email: ''
+}
 
 </script>
 
 <template>
     <div class="container-sm mb-3 text-center card">
       <div class="row g-3 ">
-        <input itemid="0" v-model="username" type="email" class="form-control" placeholder="email">
-        <input v-model="email" type="text" class="form-control" placeholder="Имя пользователя">
-        <input v-model="password" type="password" class="form-control" placeholder="Пароль">
+        <input itemid="0" v-model="user.username" type="email" class="form-control" placeholder="email" id="inputGroup1">
+        <input v-model="user.email" type="text" class="form-control" placeholder="Имя пользователя" id="inputGroup2">
+        <input v-model="user.password" type="password" class="form-control" placeholder="Пароль" id="inputGroup3">
         <div class="col-sm">
-            <button type="submit" class="btn btn-primary" @click="user.post(email, username, password)">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary" @click="userAPI.post(user)">Зарегистрироваться</button>
         </div>
         <div class="row g-2 text-center">
-            <a href="/auth/login">У меня уже есть аккаунт</a>
+            <RouterLink to="/auth/login">У меня уже есть аккаунт</RouterLink>
         </div>
       </div>
-      <button type="button" class="btn btn-secondary" @click="user.get()">Получить пользвателей</button>
+      <button type="button" class="btn btn-secondary" @click="userAPI.get()">Получить пользвателей</button>
     </div>
-</template>
+</template>../scripts/APIDataService
