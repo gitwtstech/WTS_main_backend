@@ -1,8 +1,12 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
 class WTSUser(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.EmailField("Email", max_length=256)
     company = models.ForeignKey('Company', null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
