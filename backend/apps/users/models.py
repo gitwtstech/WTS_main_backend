@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 
 class WTSUser(AbstractUser):
@@ -10,7 +10,7 @@ class WTSUser(AbstractUser):
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=256)
+    name = models.CharField('Название', max_length=256)
     phone = models.CharField(max_length=64, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)

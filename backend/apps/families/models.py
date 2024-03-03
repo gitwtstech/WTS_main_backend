@@ -14,6 +14,9 @@ class Factory(models.Model):
     def __str__(self):
         return f'Name: {self.name}, id: {self.id}'
 
+    class Meta:
+        verbose_name_plural = 'Производители'
+
 
 class Category(models.Model):
     name = models.CharField(max_length=256)
@@ -22,10 +25,16 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'Категории'
+
 
 class Family(BaseModel):
     factory = models.ForeignKey(Factory, on_delete=models.PROTECT, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Семейства'
 
 
 class FamilyImage(models.Model):
@@ -39,6 +48,9 @@ class RevitFamily(BaseModel):
     def __str__(self):
         return f'{self.family.name}: {self.name}'
 
+    class Meta:
+        verbose_name_plural = 'ревит семейства'
+
 
 class RevitType(models.Model):
     name = models.CharField(max_length=256)
@@ -48,3 +60,7 @@ class RevitType(models.Model):
 class ThreeDSMaxFamily(BaseModel):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='threedsmax_families')
     file = models.FileField(upload_to='files')
+
+    class Meta:
+        verbose_name_plural = '3DSmax families'
+        verbose_name = '3DSmax family'
