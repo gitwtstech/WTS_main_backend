@@ -20,19 +20,17 @@ class UserAPI {
                 'Accept': 'application/json'
             }
         })
-        logAxiosResponse(response)
-        return response
+        return logAxiosResponse(response)
     };
 
     async getById(id: number){
-        const response = await http.get<Users>("users/",{
+        const response = await http.get<Users>(`users/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         })
-
-        return response
+        return logAxiosResponse(response)
     };
 
     async post(user: User){
@@ -44,12 +42,11 @@ class UserAPI {
                 'Accept': 'application/json'
             }
         });
-        logAxiosResponse(response)
-        return response
+        return logAxiosResponse(response)
     };
 
-    async put(user: User){
-        const response = await http.put<User>("users/", 
+    async put(id: number, user: User){
+        const response = await http.put<User>(`users/${id}`, 
         user,  
         {
             headers: {
@@ -57,8 +54,7 @@ class UserAPI {
                 'Accept': 'application/json'
             }
         });
-        logAxiosResponse(response)
-        return response
+        return logAxiosResponse(response)
     };
 }
 
