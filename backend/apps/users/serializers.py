@@ -13,4 +13,4 @@ class WTSUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WTSUser
-        fields = ['username', 'company']
+        fields = ['id', 'username', 'company']
